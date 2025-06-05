@@ -1,32 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=El+Messiri:wght@600&family=Amiri&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
 body {
-  font-family: 'Cairo', 'El Messiri', 'Amiri', sans-serif;
+  font-family: 'Cairo', sans-serif;
   direction: rtl;
-  background: linear-gradient(to left, #f1f4f7, #d1edf3);
+  background: linear-gradient(to left, #f8f4f0, #e0e0e0);
+  color: #111;
   text-align: center;
   padding: 20px;
   animation: fadeInBody 1s ease-in;
   position: relative;
   overflow-x: hidden;
-  color: #222;
 }
-
-/* زخارف SVG */
-body::before, body::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  width: 200px;
-  height: 200px;
-  background-image: url('https://www.svgrepo.com/show/354380/analytics-graph.svg'), url('https://www.svgrepo.com/show/509917/star.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: 0.08;
-}
-body::before { top: 10%; left: 5%; }
-body::after  { bottom: 10%; right: 5%; }
 
 @keyframes fadeInBody {
   from { opacity: 0; transform: translateY(20px); }
@@ -55,15 +39,14 @@ body::after  { bottom: 10%; right: 5%; }
   transform: scale(1.1) rotate(5deg);
 }
 
-/* نموذج تسجيل الدخول */
 .login-form {
   margin-top: 30px;
   display: inline-block;
   text-align: right;
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #fff;
   border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
   animation: fadeInCard 1.2s ease;
   z-index: 1;
 }
@@ -80,54 +63,66 @@ input, button {
   width: 80%;
   max-width: 320px;
   font-size: 1.05rem;
-  border: 1px solid #ccc;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
+input {
+  border: 1px solid #999;
+}
 input:focus {
-  border-color: #028a7e;
-  box-shadow: 0 0 10px rgba(2, 138, 126, 0.3);
+  border-color: #c62828;
+  box-shadow: 0 0 10px rgba(198, 40, 40, 0.3);
   outline: none;
 }
 
 button {
-  background-color: #028a7e;
+  background: linear-gradient(45deg, #c62828, #8e0000);
   color: white;
   border: none;
   cursor: pointer;
   font-weight: bold;
-  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: left 0.3s ease;
+}
+button:hover::after {
+  left: 100%;
 }
 button:hover {
-  background-color: #015c53;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .error {
-  color: red;
+  color: #c62828;
   font-size: 0.9rem;
   margin-top: 10px;
   animation: shake 0.3s ease;
 }
 
 @keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  50% { transform: translateX(4px); }
-  75% { transform: translateX(-4px); }
-  100% { transform: translateX(0); }
+  0%, 100% { transform: translateX(0); }
+  25%, 75% { transform: translateX(-4px); }
+  50%      { transform: translateX(4px); }
 }
 
-/* البطاقة */
 .dashboard-card {
   max-width: 650px;
   margin: 50px auto;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fafafa;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   animation: fadeInCard 1.2s ease;
   position: relative;
   z-index: 1;
@@ -139,10 +134,9 @@ button:hover {
   font-size: 1.6rem;
   font-weight: bold;
   margin-bottom: 30px;
-  color: #028a7e;
+  color: #b71c1c;
 }
 
-/* الإحصائيات */
 .stats {
   display: flex;
   flex-wrap: wrap;
@@ -152,20 +146,25 @@ button:hover {
 }
 
 .stat-box {
-  background-color: #e0f7fa;
+  background-color: #eee;
   padding: 20px;
   border-radius: 12px;
   width: 160px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  cursor: pointer;
 }
 .stat-box:hover {
-  transform: translateY(-5px);
+  background-color: #d32f2f;
+  color: white;
+  transform: scale(1.05);
+}
+.stat-box:active {
+  transform: scale(0.95);
 }
 
-/* زر تسجيل الخروج */
 .logout-btn {
-  background-color: #e53935;
+  background: linear-gradient(45deg, #c62828, #8e0000);
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -173,30 +172,31 @@ button:hover {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .logout-btn:hover {
-  background-color: #b71c1c;
+  background-color: #7f0000;
+  transform: scale(1.03);
 }
 
-/* زر إظهار/إخفاء */
 .toggle-btn {
-  background-color: #673ab7;
+  background-color: #666;
   color: white;
-  padding: 10px 20px;
+  padding: 6px 14px;
   border: none;
-  border-radius: 10px;
+  border-radius: 50px;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  margin-bottom: 20px;
-  transition: 0.3s;
+  margin: 10px auto 20px;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .toggle-btn:hover {
-  background-color: #512da8;
+  background-color: #444;
+  transform: scale(1.05);
 }
 
-/* موبايل */
 @media (max-width: 768px) {
   .dashboard-card {
     padding: 20px;
