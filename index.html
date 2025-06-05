@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>اتحاد طلاب تحيا مصر | المكتب الإعلامي</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- خطوط عربية احترافية -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=El+Messiri:wght@600&family=Amiri&display=swap" rel="stylesheet" />
+
+  <!-- ملف التنسيق الموحد -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="header">
-    <img src="401083098_752694266904463_7286908926749034601_n-removebg-preview.png" alt="Logo" class="logo">
+    <img src="401083098_752694266904463_7286908926749034601_n-removebg-preview.png" alt="Logo" class="logo" />
     <h1>اتحاد طلاب تحيا مصر | المكتب الإعلامي</h1>
   </div>
 
   <div class="login-form">
     <label for="username">اسم المستخدم:</label>
-    <input type="text" id="username" />
+    <input type="text" id="username" placeholder="أدخل اسم المستخدم" />
 
     <label for="password">كلمة المرور:</label>
-    <input type="password" id="password" />
-    <div class="toggle-password" onclick="togglePassword()">عرض / إخفاء</div>
+    <input type="password" id="password" placeholder="أدخل كلمة المرور" />
+
+    <div class="toggle-btn" onclick="togglePassword()">👁️ عرض / إخفاء كلمة المرور</div>
 
     <button onclick="handleLogin()">تسجيل الدخول</button>
 
@@ -45,16 +50,16 @@
       "jannah farrag": "2023",
       "sama hesham": "2024",
       "amgad mohamed": "2025",
-      "andro samir" : "2026",
-      "omar mohamed" : "2027",
-      "ahmed elkady" : "2028",
-      "moamen ali" : "2029",
-      "abdo ramadan" : "2030",
-      "sara mohsen" : "2031",
-      "basmala elnagar" : "2032",
-      "mohamed nabil" : "2033",
-      "mostafa gawish" : "2034",
-      "mahmoud gawish" : "2035",
+      "andro samir": "2026",
+      "omar mohamed": "2027",
+      "ahmed elkady": "2028",
+      "moamen ali": "2029",
+      "abdo ramadan": "2030",
+      "sara mohsen": "2031",
+      "basmala elnagar": "2032",
+      "mohamed nabil": "2033",
+      "mostafa gawish": "2034",
+      "mahmoud gawish": "2035"
     };
 
     function togglePassword() {
@@ -75,7 +80,7 @@
       }
 
       setTimeout(() => {
-        const valid = users[username] === password;
+        const valid = users[username.toLowerCase()] === password;
 
         if (valid) {
           localStorage.setItem("username", username);

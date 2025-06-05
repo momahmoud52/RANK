@@ -25,3 +25,4 @@ function handleLogin() {
   localStorage.setItem("username", username);
   window.location.href = "dashboard.html";
 }
+
