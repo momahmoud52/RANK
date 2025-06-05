@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الملف الشخصي | اتحاد طلاب تحيا مصر</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="dashboard-card">
+    <div class="dashboard-header">
+      <img src="401083098_752694266904463_7286908926749034601_n-removebg-preview.png" alt="Logo" class="logo">
+      <h1>اتحاد طلاب تحيا مصر</h1>
+    </div>
+
+    <h2 class="welcome-text">مرحبًا، <span id="user"></span> 👋</h2>
+
+    <div class="stats">
+      <div class="stat-box">
+        <h3>تقييمك</h3>
+        <p id="rating"></p>
+      </div>
+      <div class="stat-box">
+        <h3>صفتك بالمحافظة</h3>
+        <p id="posts"></p>
+      </div>
+      <div class="stat-box">
+        <h3>المهام المنفذة</h3>
+        <p id="badges"></p>
+      </div>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">🚪 تسجيل الخروج</button>
+  </div>
+
+  <script>
+    const username = localStorage.getItem("username");
+
+    const users = {
+      "admin": { rating: "⭐️⭐️⭐️⭐️☆", posts: "نائب رئيس", badges: "3 من أصل 5" },
+      "ahmed": { rating: "⭐️⭐️⭐️☆☆", posts: 7, badges: "1 شارة" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+      "مروان": { rating: "⭐️⭐️⭐️⭐️⭐️", posts: 20, badges: "5 شارات" },
+    };
+
+    if (!username || !users[username]) {
+      window.location.href = "index.html";
+    } else {
+      const userData = users[username];
+      document.getElementById("user").textContent = username;
+      document.getElementById("rating").textContent = userData.rating;
+      document.getElementById("posts").textContent = userData.posts;
+      document.getElementById("badges").textContent = userData.badges;
+    }
+
+    function logout() {
+      localStorage.removeItem("username");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
