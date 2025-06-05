@@ -4,28 +4,44 @@
   <meta charset="UTF-8">
   <title>الملف الشخصي | اتحاد طلاب تحيا مصر</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .upload-btn {
+      background: linear-gradient(45deg, #1b5e20, #388e3c);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .upload-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 128, 0, 0.2);
+    }
+
+    #last-upload {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- زخارف SVG أعلى وأسفل -->
-  <svg style="position: absolute; top: -40px; right: -40px; width: 200px; opacity: 0.05; z-index: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path fill="red" d="M12 2L2 7h20L12 2zm0 2.75L18.75 7H5.25L12 4.75zM4 8v11h16V8H4zm2 2h12v7H6v-7z"/>
-  </svg>
-  <svg style="position: absolute; bottom: -40px; left: -40px; width: 200px; opacity: 0.05; z-index: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path fill="black" d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-  </svg>
 
   <div class="dashboard-card">
     <div class="dashboard-header">
       <img src="401083098_752694266904463_7286908926749034601_n-removebg-preview.png" alt="Logo" class="logo">
-      <h1>المكتب الاعلامي</h1>
+      <h1 class="site-name">المكتب الإعلامي</h1>
     </div>
 
-    <h2 class="welcome-text">Welcome leader, <span id="user"></span> 👋</h2>
-    
+    <h2 class="welcome-text">مرحباً أيها القائد، <span id="user"></span> 👋</h2>
 
     <div class="stats">
       <div class="stat-box">
@@ -42,6 +58,8 @@
       </div>
     </div>
 
+    <button class="upload-btn" onclick="uploadTask()">📤 ارفع المهام المطلوبة</button>
+    <p id="last-upload">لا يوجد رفع بعد</p>
     <button class="logout-btn" onclick="logout()">🚪 تسجيل الخروج</button>
   </div>
 
@@ -77,6 +95,36 @@
       "mahmoud gawish": { rating: "☆☆☆☆☆ (0%)", posts: "رئيس المكتب الاعلامي - الإسماعيلية", badges: "لا يوجد" }
     };
 
+    // ✅ تم التعديل: روابط Google Drive حسب الاسم
+    const driveLinks = {
+      "mohamed koream": "https://drive.google.com/drive/folders/1Et48ULZKxJfLIlMNiRgwlzjysiblDSPC?usp=drive_link",
+      "esraa ehab": "https://drive.google.com/drive/folders/1aLA3ZsQGoLKXDgH9r5GN82yRlitqVTBz?usp=drive_link",
+      "basant elkady": "https://drive.google.com/drive/folders/11YZXpnlnwi-8VDWuQtLl1xgwjKKOtIRx?usp=drive_link",
+      "islam shafter": "https://drive.google.com/drive/folders/1Dj0RMc-tWjiheuQMjj04FG42x_b9dqGa?usp=drive_link",
+      "abdo mohsen": "https://drive.google.com/drive/folders/1KC0qZEkjTHok2L0Q0Zy6HgPlzQESO04y?usp=drive_link",
+      "mohamed mostafa": "https://drive.google.com/drive/folders/1iAfkBtdsYqS4KwjaN0SpNBE9uqJUi7k-?usp=drive_link",
+      "menna mohamed": "https://drive.google.com/drive/folders/1TTHoAp3EHT3T1dvJ4JaaKEUzbt_tS3eL?usp=drive_link",
+      "yousif ahmed": "https://drive.google.com/drive/folders/drive_folder_id_8",
+      "rawda ashraf": "https://drive.google.com/drive/folders/drive_folder_id_9",
+      "assem meshal": "https://drive.google.com/drive/folders/drive_folder_id_10",
+      "maged ehab": "https://drive.google.com/drive/folders/drive_folder_id_11",
+      "nada yasser": "https://drive.google.com/drive/folders/drive_folder_id_12",
+      "mohamed haggan": "https://drive.google.com/drive/folders/drive_folder_id_13",
+      "jannah farrag": "https://drive.google.com/drive/folders/drive_folder_id_14",
+      "sama hesham": "https://drive.google.com/drive/folders/drive_folder_id_15",
+      "amgad mohamed": "https://drive.google.com/drive/folders/drive_folder_id_16",
+      "andro samir": "https://drive.google.com/drive/folders/drive_folder_id_17",
+      "omar mohamed": "https://drive.google.com/drive/folders/drive_folder_id_18",
+      "ahmed elkady": "https://drive.google.com/drive/folders/drive_folder_id_19",
+      "moamen ali": "https://drive.google.com/drive/folders/drive_folder_id_20",
+      "abdo ramadan": "https://drive.google.com/drive/folders/drive_folder_id_21",
+      "sara mohsen": "https://drive.google.com/drive/folders/drive_folder_id_22",
+      "basmala elnagar": "https://drive.google.com/drive/folders/drive_folder_id_23",
+      "mohamed nabil": "https://drive.google.com/drive/folders/drive_folder_id_24",
+      "mostafa gawish": "https://drive.google.com/drive/folders/drive_folder_id_25",
+      "mahmoud gawish": "https://drive.google.com/drive/folders/drive_folder_id_26"
+    };
+
     if (!username || !users[username]) {
       window.location.href = "index.html";
     } else {
@@ -85,11 +133,28 @@
       document.getElementById("rating").textContent = userData.rating;
       document.getElementById("posts").textContent = userData.posts;
       document.getElementById("badges").textContent = userData.badges;
+
+      const last = localStorage.getItem(`upload_${username}`);
+      document.getElementById("last-upload").textContent = last ? `🕒 آخر رفع: ${last}` : "لا يوجد رفع بعد";
     }
 
     function logout() {
       localStorage.removeItem("username");
       window.location.href = "index.html";
+    }
+
+    // ✅ تم التعديل: فتح رابط المستخدم عند الضغط
+    function uploadTask() {
+      const now = new Date().toLocaleString("ar-EG");
+      localStorage.setItem(`upload_${username}`, now);
+      document.getElementById("last-upload").textContent = `🕒 آخر رفع: ${now}`;
+
+      const link = driveLinks[username]; // ✅ تم التعديل
+      if (link) {
+        window.open(link, "_blank");     // ✅ تم التعديل
+      } else {
+        alert("عذراً، لا يوجد رابط مخصص لهذا المستخدم."); // ✅ تم التعديل
+      }
     }
   </script>
 
