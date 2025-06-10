@@ -200,25 +200,32 @@ button:hover {
   transform: scale(1.05);
 }
 
-.welcome-message {
-  font-size: 1.8rem;
+.welcome-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.148); /* خلفية شفافة */
+  backdrop-filter: blur(8px); /* تأثير الزجاج المثلّج */
+  color: #880e0e;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #b71c1c;
-  background: linear-gradient(to left, #fff4f4, #ffeaea);
-  border: 2px dashed #b71c1c;
-  padding: 20px;
-  border-radius: 20px;
-  margin: 30px auto;
-  max-width: 600px;
-  animation: pulse 2s infinite ease-in-out;
-  box-shadow: 0 4px 12px rgba(183, 28, 28, 0.1);
+  padding: 14px 28px;
+  border: 1px solid rgba(136, 14, 79, 0); /* إطار ناعم وشفاف */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  animation: fadePopup 2s ease-in-out forwards;
+  opacity: 0;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.02); opacity: 0.9; }
-  100% { transform: scale(1); opacity: 1; }
+@keyframes fadePopup {
+  0%   { opacity: 0; transform: translate(-50%, -60%); }
+  10%  { opacity: 1; transform: translate(-50%, -50%); }
+  90%  { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -60%); }
 }
+
 
 .social-icons {
   display: flex;
